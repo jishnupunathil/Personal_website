@@ -7,6 +7,8 @@
 (function() {
   "use strict";
 
+  
+
   /**
    * Easy selector helper function
    */
@@ -162,6 +164,7 @@
    * Intro type effect
    */
   const typed = select('.typed')
+  
   if (typed) {
     let typed_strings = typed.getAttribute('data-typed-items')
     typed_strings = typed_strings.split(',')
@@ -234,7 +237,7 @@
 })()
 
 
-//validation
+ //validation
 
 var nameErr = document.getElementById('name-error');
 var emailErr = document.getElementById('email-err');
