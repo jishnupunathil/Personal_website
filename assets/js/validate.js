@@ -1,62 +1,62 @@
 $(document).ready(function () {
-    jQuery.validator.addMethod(
-      "lettersonly",
-      function (value, element) {
-        return this.optional(element) || /^[a-z ]+$/.test(value);
+  jQuery.validator.addMethod(
+    "lettersonly",
+    function (value, element) {
+      return this.optional(element) || /^[a-z ]+$/.test(value);
+    },
+    "Letters only please"
+  );
+  jQuery.validator.addMethod(
+    "minlength5",
+    function (value, element) {
+      return this.optional(element) || (value.trim().length >= 5);
+    },
+    "Minimum 5 characters without space"
+  );
+  $(".submit-form").validate({
+    rules: {
+      name: {
+        minlength5: true,
+        lettersonly: true,
+        required: true,
+        minlength: 4,
       },
-      "please enter a name"
-    );
-    jQuery.validator.addMethod(
-      "minlength5",
-      function (value, element) {
-        return this.optional(element) || (value.trim().length >= 5);
+      email: {
+        required: true,
+        email: true,
       },
-      "Minimum 5 characters"
-    );
-    $(".submit-form").validate({
-      rules: {
-        name: {
-          minlength5: true,
-          lettersonly: true,
-          required: true,
-          minlength: 4,
-        },
-        email: {
-          required: true,
-          email: true,
-        },
-        subject: {
-          required: true,
-          minlength: 10,
-          minlength5: true,
-          lettersonly: true,
-        },
-        message: {
-          minlength5: true,
-          required: true,
-          minlength: 10,
-          maxlength: 200,
-        },
+      subject: {
+        required: true,
+        minlength: 10,
+        minlength5: true,
+        lettersonly: true,
       },
-      messages: {
-        name: {
-          minlength: "Please Enter Your Full Name",
-        },
-        email: {
-          email: "Please enter a valid Email id",
-        },
-        message: {
-          minlength: "too short! minimum 10 characters",
-          maxlength: "too large",
-        },
+      message: {
+        minlength5: true,
+        required: true,
+        minlength: 10,
+        maxlength: 200,
       },
-      submitHandler: function (form) {
-        console.log("True");
-        console.log("in function submit");
-        submit();
+    },
+    messages: {
+      name: {
+        minlength: "Please Enter Your Full Name",
       },
-    });
+      email: {
+        email: "Please enter a valid Email id",
+      },
+      message: {
+        minlength: "Its too short! minimum 10 characters",
+        maxlength: "Oh no! it's too large",
+      },
+    },
+    submitHandler: function (form) {
+      console.log("True");
+      console.log("in function submit");
+      submit();
+    },
   });
+});
   function submit() {
     $.ajax({
       url: "https://script.google.com/macros/s/AKfycbzuDWwqd07qJi90DEr6JWYqBdlYME4o6uq51NllATd3y6iFUzOpTYTZLhkU1BjK_GOB/exec",
