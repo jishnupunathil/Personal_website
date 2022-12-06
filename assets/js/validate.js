@@ -4,7 +4,7 @@ $(document).ready(function () {
       function (value, element) {
         return this.optional(element) || /^[a-z ]+$/.test(value);
       },
-      "please enter a name"
+
     );
     jQuery.validator.addMethod(
       "minlength5",
